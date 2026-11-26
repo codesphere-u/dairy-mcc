@@ -1,0 +1,48 @@
+[build-system]
+requires = ["hatchling>=1.24.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dairy-mcc"
+version = "0.1.0"
+description = "Zero-dependency Dairy Milk Collection Center (MCC) engine: Quevenne lactometer temperature-corrected water-adulteration detection, Richmond SNF/fat grading, alcohol/Resazurin gates, bulk chiller sizing, and Decimal farmer payouts."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "Akandwanaho Ivan Alvin" }]
+keywords = [
+    "dairy",
+    "milk-collection-center",
+    "lactometer",
+    "food-safety",
+    "agritech",
+    "cooperative",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+]
+
+[project.scripts]
+dairy-mcc = "dairy_mcc.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dairy_mcc"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unreachable = true
